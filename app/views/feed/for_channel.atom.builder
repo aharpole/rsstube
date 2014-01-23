@@ -4,7 +4,8 @@ atom_feed do |feed|
   @feed_entries.each do |item|
     feed.entry item, {id:"http://youtube.com/watch?v=#{item["media$group"]["yt$videoid"]["$t"]}", url:"http://youtube.com/watch?v=#{item["media$group"]["yt$videoid"]["$t"]}"} do |entry|
       entry.title item["title"]["$t"]
-      entry.link {href:item["link"].first["href"]}
+      link = {:href => item["link"].first["href"]}
+      entry.link link
       entry.updated item["updated"]["$t"]
       entry.content <<EMBED
 <iframe width="560" height="315" src="//www.youtube.com/embed/#{item["media$group"]["yt$videoid"]["$t"]}" frameborder="0" allowfullscreen></iframe>
