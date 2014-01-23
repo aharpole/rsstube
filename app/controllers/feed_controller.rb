@@ -8,6 +8,10 @@ class FeedController < ApplicationController
     end
   end
   
+  def index
+    
+  end
+  
   private
   def feed_entries(json)
     feed_hash = JSON.parse json
