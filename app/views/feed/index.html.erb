@@ -1,9 +1,34 @@
-<h1 id="rsstube" class="text-center">RSSTube <small>Proper Subscriptions For YouTube</small></h1>
-<p class="lead">YouTube's homepage is cluttered with things YouTube thinks you should watch. But what about the channels <em>you</em> want to keep up with?</p>
+<div class="headerwrapper" style="padding:0 5%;">
+		<div class="row headerrow" >
+		<div class="large-8 large-offset-2 columns text-center" style="">
+			<%= image_tag "logo.svg" %>
+		</div>
+		</div>
 
-<p>RSSTube allows you to keep up with any channel simply by using your favorite RSS reader. The RSS feed for the channel will be simply a feed of each upload, and the content of each feed item will contain simply an embedded YouTube video. Nothing more.</p>
+</div>
 
-<p>If you want to comment or see more, just click through and you'll be taken straight to the video in YouTube.</p>
-
-<h2 class="text-center">Using RSSTube</h2>
-<p>It's easy! Add a subscription in your RSS reader to <code>http://<%= request.domain %>/channel.atom</code>, replacing <code>channel</code> with the name of the channel you want to subscribe to.</p>
+<div class="aboutwrapper" style="padding:0 5%;">
+	<div class="row">
+		<div class="large-10 large-offset-1 columns text-center aboutrow" >
+			<span class="big-text">YouTube's homepage is cluttered with things YouTube thinks you should watch. But what about the channels you want to keep up with?</span>
+			<span class="hr"></span>
+			<span class="small-text">RSSTUBE creates a feed of the content coming from any individual YouTube channel. This means you can consume YouTube content just like any other feed. Want to see more about a video? Just click it to be taken to the video’s YouTube page. Can you say simple?</span>
+		</div>
+	</div>
+</div>
+<div class="howtowrapper" style="padding:50px 5%;">
+	<div class="row">
+		<div class="large-10 large-offset-1 columns text-center"  >
+			<%= image_tag "howto.svg" %>
+			<p class="howtop">
+			It's easy! Add a subscription in your RSS reader to <br/>
+			<a href="#" target="_blank" class="linky">http://<%= request.domain %>/channel.atom</a> <br/>
+replacing <code>channel</code> with the name of the channel you want to subscribe to.
+			</p>
+			<span class="hr"></span>
+			Made with <span class="flaticon solid battery-charging-3" style="font-size:24px;"></span> in Los Angeles<br/>
+			<p class="builtby">Built by <a href="http://icanthascheezburger.com" target="_blank" >Aaron Harpole</a> and <a href="http://www.hellomarcus.com" target="_blank" >Marcus Edvalson</a></p>
+		</div>
+	</div>
+	
+</div>
