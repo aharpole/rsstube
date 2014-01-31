@@ -22,9 +22,13 @@
 			<%= image_tag "howto.svg" %>
 			<p class="howtop">
 			It's easy! Add a subscription in your RSS reader to <br/>
-			<a href="#" target="_blank" class="linky">http://<%= request.domain %>/channel.atom</a> <br/>
+			<a href="#" target="_blank" class="linky">http://<%= request.domain %>/channel</a> <br/>
 replacing <code>channel</code> with the name of the channel you want to subscribe to.
 			</p>
+      
+      <p class="howtop">
+        Want an RSS feed of a playlist? Grab the playlist ID from the playlist URL, and point your RSS reader to <br/> <a href="#" target="_blank" class="linky">http://<%= request.domain %>/playlists/playlist_id</a> <br/> replacing <code>playlist_id</code> with the ID of the playlist.
+      </p>
 			<span class="hr"></span>
 			Made with <span class="flaticon solid battery-charging-3" style="font-size:24px;"></span> in Los Angeles<br/>
 			<p class="builtby">Built by <a href="http://icanthascheezburger.com" target="_blank" >Aaron Harpole</a> and <a href="http://www.hellomarcus.com" target="_blank" >Marcus Edvalson</a></p>
