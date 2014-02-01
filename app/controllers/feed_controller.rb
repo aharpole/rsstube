@@ -12,6 +12,7 @@ class FeedController < ApplicationController
   def for_playlist
     resp = HTTParty.get("http://gdata.youtube.com/feeds/api/playlists/#{params[:playlist_id]}?v=2&alt=json")
     raise "Bad YouTube response" if resp.code != 200
+    @feed = JSON.parse resp.body
     @feed_entries = feed_entries(resp.body)
     
     respond_to do |format|
