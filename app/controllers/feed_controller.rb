@@ -1,8 +1,6 @@
 class FeedController < ApplicationController
   def for_channel
-    resp = HTTParty.get("http://gdata.youtube.com/feeds/api/users/#{params[:channel_name]}/uploads?v=2&alt=json")
-    raise "Bad YouTube response" if resp.code != 200
-    @feed_entries = feed_entries(resp.body)
+    @feed_entries = uploads_feed["items"]
     
     respond_to do |format|
       format.atom
@@ -10,10 +8,7 @@ class FeedController < ApplicationController
   end
   
   def for_playlist
-    resp = HTTParty.get("http://gdata.youtube.com/feeds/api/playlists/#{params[:playlist_id]}?v=2&alt=json")
-    raise "Bad YouTube response" if resp.code != 200
-    @feed = JSON.parse resp.body
-    @feed_entries = feed_entries(resp.body)
+    @feed_entries = uploads_feed["items"]
     
     respond_to do |format|
       format.atom
@@ -25,6 +20,19 @@ class FeedController < ApplicationController
   end
   
   private
+  
+  def content_details_feed
+    JSON.parse HTTParty.get("https://www.googleapis.com/youtube/v3/channels?part=contentDetails&forUsername=#{params[:channel_name]}&key=#{ENV["YOUTUBE_API_KEY"]}").body
+  end
+  
+  def uploads_playlist_id
+    params[:playlist_id] || content_details_feed["items"].first["contentDetails"]["relatedPlaylists"]["uploads"] # TODO: cache these in Redis
+  end
+  
+  def uploads_feed
+    JSON.parse HTTParty.get("https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=#{uploads_playlist_id}&key=#{ENV["YOUTUBE_API_KEY"]}").body
+  end
+  
   def feed_entries(json)
     feed_hash = JSON.parse json
     feed_hash["feed"]["entry"]

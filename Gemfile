@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.0.0'
+ruby '2.2.2'
 
 
 gem 'rails', '~>4.0'
@@ -25,6 +25,9 @@ group :assets do
 end
 
 gem 'jquery-rails'
+
+gem 'dotenv-rails', group: :development
+gem 'certified'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

@@ -1,17 +1,17 @@
 atom_feed do |feed|
-  feed.title "#{@feed['feed']["author"].first["name"]["$t"]}'s Uploads"
+  feed.title "#{params[:channel_name]}'s Uploads"
   feed.updated Time.now
   @feed_entries.each do |item|
-    feed.entry item, {id:"http://youtube.com/watch?v=#{item["media$group"]["yt$videoid"]["$t"]}", url:"http://youtube.com/watch?v=#{item["media$group"]["yt$videoid"]["$t"]}"} do |entry|
-      entry.title item["title"]["$t"]
-      link = {:href => item["link"].first["href"]}
-      entry.link link
-      entry.updated item["updated"]["$t"]
-      entry.content <<EMBED
-<iframe width="560" height="315" src="//www.youtube.com/embed/#{item["media$group"]["yt$videoid"]["$t"]}" frameborder="0" allowfullscreen></iframe>
-EMBED
+    video_id = item["snippet"]["resourceId"]["videoId"]
+    feed.entry item, {id:"http://youtube.com/watch?v=#{video_id}", url:"http://youtube.com/watch?v=#{video_id}"} do |entry|
+      entry.title item["snippet"]["title"]
+      entry.link "http://youtube.com/watch?v=#{video_id}"
+      entry.updated item["snippet"]["publishedAt"]
+      entry.content <<HTML
+<iframe width="560" height="315" src="//www.youtube.com/embed/#{video_id}" frameborder="0" allowfullscreen></iframe>
+HTML
       entry.author do |author|
-        author.name item["author"].first["name"]["$t"]
+        author.name item["snippet"]["channelTitle"]
       end
     end
   end
