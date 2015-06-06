@@ -26,6 +26,7 @@ class FeedController < ApplicationController
   end
   
   def uploads_playlist_id
+    return "UU" + params[:channel_id][2..-1] if params[:channel_id]
     params[:playlist_id] || content_details_feed["items"].first["contentDetails"]["relatedPlaylists"]["uploads"] # TODO: cache these in Redis
   end
   
