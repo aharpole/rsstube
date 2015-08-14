@@ -1,5 +1,5 @@
 atom_feed do |feed|
-  feed.title "#{params[:channel_name]}'s Uploads"
+  feed.title "#{@feed_entries.first["snippet"]["channelTitle"] rescue "Untitled"}'s Uploads"
   feed.updated Time.now
   @feed_entries.each do |item|
     video_id = item["snippet"]["resourceId"]["videoId"]
