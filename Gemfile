@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ruby '2.6.3'
 
 
-gem 'rails', '~>4.0'
+gem 'rails', '~>6.0'
 gem 'httparty'
 gem 'rails_12factor'
 gem 'newrelic_rpm'
