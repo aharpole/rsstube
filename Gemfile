@@ -7,11 +7,18 @@ gem 'rails', '~>4.0'
 gem 'httparty'
 gem 'rails_12factor'
 gem 'newrelic_rpm'
-group :development do
+gem 'sqlite3', '~> 1.3.6'
+group :development, :test do
   gem "better_errors"
   gem "binding_of_caller"
   gem "pry"
 end
+
+group :test do
+  gem 'vcr'
+  gem 'webmock'
+end
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
