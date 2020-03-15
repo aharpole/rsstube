@@ -1,17 +1,24 @@
 source 'https://rubygems.org'
 
-ruby '2.6.3'
+ruby '2.6.5'
 
 
 gem 'rails', '~>4.0'
 gem 'httparty'
 gem 'rails_12factor'
 gem 'newrelic_rpm'
-group :development do
+
+group :development, :test do
   gem "better_errors"
   gem "binding_of_caller"
   gem "pry"
 end
+
+group :test do
+  gem 'vcr'
+  gem 'webmock'
+end
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
