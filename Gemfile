@@ -7,7 +7,7 @@ gem 'rails', '~>4.0'
 gem 'httparty'
 gem 'rails_12factor'
 gem 'newrelic_rpm'
-gem 'sqlite3', '~> 1.3.6'
+
 group :development, :test do
   gem "better_errors"
   gem "binding_of_caller"
